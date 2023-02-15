@@ -1,0 +1,117 @@
+@startuml
+class user {
+  id
+  firstname
+  lastname
+  Email
+  password
+  photo
+  phone
+  Address
+  city
+  country
+  +login()
+  +logout()
+}
+
+class student extends user {
+
+}
+
+class formateur extends user {
+  +readExaman()
+  +createExaman()
+  +updateExaman()
+  +deleteExaman(
+  +assignStudentToPromo()
+  +assignExamanToPromo()
+
+}
+
+class school {
+  id
+  name
+  address
+  city
+  country
+  +AllSchool()
+  +readSchool()
+  +createSchool()
+  +updateSchool()
+  +deleteSchool()
+}
+
+class platformAdmin extends user {
+  +CRUDSchool()
+  +CRUDSchoolAdmin()
+  +assignschoolAdminToSchool()
+
+}
+
+
+class schoolAdmin extends user {
+  +CRUDFormateur()
+  +CRUDStudent()
+  +CRUDPromo()
+  +CRUDSchoolAdmin
+  +assignStudentToPromo()
+  +assignFormateurToPromo()
+}
+
+class promo {
+  id
+  name
+  start_date
+  end_date
+  +AllPromo()
+  +readPromo()
+  +createPromo()
+  +updatePromo()
+  +deletePromo()
+}
+
+class examan {
+  id
+  title
+  description
+  projectBackground
+  Deadline
+    +AllExaman()
+    +readExaman()
+    +createExaman()
+    +updateExaman()
+    +deleteExaman()
+}
+
+
+
+
+class Notification {
+  id
+  notification
+  Destinataire
+  +sendNotification()
+}
+
+class message {
+  id
+  Message
+  +sendMessage()
+  +readMessage()
+}
+
+'relations
+student "1.*" --- "1.*" promo
+student "1" --- "1.*" Notification
+student "1" --- "1.*" message
+formateur "1" --- "1.*" Notification
+formateur "1" --- "1.*" message
+schoolAdmin "1" --- "1.*" Notification
+schoolAdmin "1" --- "1.*" message
+formateur "1" --- "1.*" promo
+promo "1" --- "1.*" examan
+school "1" -- "1.*" schoolAdmin
+
+
+
+@enduml
