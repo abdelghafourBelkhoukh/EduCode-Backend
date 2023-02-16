@@ -111,6 +111,8 @@ schoolAdmin "1" --- "1.*" message
 formateur "1" --- "1.*" promo
 promo "1" --- "1.*" examan
 school "1" -- "1.*" schoolAdmin
+platformAdmin "1" -- "1.*" school
+platformAdmin "1" -- "1.*" schoolAdmin
 
 
 
