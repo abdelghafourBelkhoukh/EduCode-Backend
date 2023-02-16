@@ -27,7 +27,6 @@ public class PlatformAdmin {
     private String zip;
     private String country;
 
-
     @OneToMany
     private List<School> schools;
 
