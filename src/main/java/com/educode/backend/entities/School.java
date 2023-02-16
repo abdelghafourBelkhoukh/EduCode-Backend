@@ -1,12 +1,11 @@
 package com.educode.backend.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,4 +25,10 @@ public class School {
     private String state;
     private String zip;
     private String country;
+
+    @ManyToOne
+    private PlatformAdmin platformAdmin;
+
+    @OneToMany(mappedBy = "school")
+    private List<SchoolAdmin> schoolAdmins;
 }

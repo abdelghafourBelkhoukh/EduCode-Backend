@@ -32,4 +32,8 @@ public class SchoolAdmin {
     @OneToMany
     private List<Message> messages;
 
+    @ManyToOne
+    private School school;
+
+
 }
