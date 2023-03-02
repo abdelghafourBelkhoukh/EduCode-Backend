@@ -2,36 +2,41 @@ package com.educode.backend.helpers;
 
 import com.educode.backend.dto.StudentDto;
 import com.educode.backend.entities.Student;
+import org.springframework.context.annotation.Configuration;
 
-public class ConvertStudent {
-
-    public static Student toDto (StudentDto studentDto) {
+@Configuration
+public class StudentMapper {
+    public Student toEntity(StudentDto studentDto) {
         Student student = new Student();
-        student.setId(studentDto.getId());
-        student.setFistName(studentDto.getFistName());
+        if (studentDto.getId() != null){
+            student.setId(studentDto.getId());
+        }
+        student.setFirstName(studentDto.getFirstName());
         student.setLastName(studentDto.getLastName());
         student.setEmail(studentDto.getEmail());
         student.setPhone(studentDto.getPhone());
         student.setAddress(studentDto.getAddress());
         student.setCity(studentDto.getCity());
-        student.setCountry(studentDto.getCountry());
-        student.setZip(studentDto.getZip());
         student.setState(studentDto.getState());
+        student.setZip(studentDto.getZip());
+        student.setCountry(studentDto.getCountry());
+
         return student;
     }
 
-    public static StudentDto toEntity (Student student) {
+    public StudentDto toDto(Student student) {
         StudentDto studentDto = new StudentDto();
         studentDto.setId(student.getId());
-        studentDto.setFistName(student.getFistName());
+        studentDto.setFirstName(student.getFirstName());
         studentDto.setLastName(student.getLastName());
         studentDto.setEmail(student.getEmail());
         studentDto.setPhone(student.getPhone());
         studentDto.setAddress(student.getAddress());
         studentDto.setCity(student.getCity());
-        studentDto.setCountry(student.getCountry());
-        studentDto.setZip(student.getZip());
         studentDto.setState(student.getState());
+        studentDto.setZip(student.getZip());
+        studentDto.setCountry(student.getCountry());
+
         return studentDto;
     }
 }

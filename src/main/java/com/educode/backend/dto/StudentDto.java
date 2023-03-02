@@ -17,10 +17,10 @@ import java.util.List;
 @NoArgsConstructor
 public class StudentDto {
     private Long id;
-    private String fistName;
+    private String firstName;
     private String lastName;
     private String email;
-//    private String password;
+    private String password;
     private String phone;
     private String address;
     private String city;
