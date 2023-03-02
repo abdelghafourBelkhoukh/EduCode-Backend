@@ -16,6 +16,7 @@ public class StudentMapper {
         student.setEmail(studentDto.getEmail());
         student.setPhone(studentDto.getPhone());
         student.setAddress(studentDto.getAddress());
+        student.setPassword(studentDto.getPassword());
         student.setCity(studentDto.getCity());
         student.setState(studentDto.getState());
         student.setZip(studentDto.getZip());
@@ -31,6 +32,7 @@ public class StudentMapper {
         studentDto.setLastName(student.getLastName());
         studentDto.setEmail(student.getEmail());
         studentDto.setPhone(student.getPhone());
+        studentDto.setPassword(student.getPassword());
         studentDto.setAddress(student.getAddress());
         studentDto.setCity(student.getCity());
         studentDto.setState(student.getState());
