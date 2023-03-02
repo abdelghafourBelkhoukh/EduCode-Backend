@@ -3,9 +3,15 @@ package com.educode.backend.dto;
 import com.educode.backend.entities.School;
 import com.educode.backend.entities.SchoolAdmin;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
+@Data
+@NoArgsConstructor @AllArgsConstructor
 public class PlatformAdminDto {
     private Long id;
     private String fistName;

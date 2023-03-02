@@ -26,7 +26,11 @@ public class School {
     private String zip;
     private String country;
 
+    private Long platform_admin_id;
+
+
     @ManyToOne
+    @JoinColumn(name = "platform_admin_id", insertable = false, updatable = false)
     private PlatformAdmin platformAdmin;
 
     @OneToMany(mappedBy = "school")
