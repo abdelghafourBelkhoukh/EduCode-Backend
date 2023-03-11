@@ -17,7 +17,6 @@ public class ExamanDto {
     private String projectBackround;
     private String deadline;
     private String createdDate;
+    private Long promo_id;
 
-    @ManyToOne
-    private PromoDto promoDto;
 }

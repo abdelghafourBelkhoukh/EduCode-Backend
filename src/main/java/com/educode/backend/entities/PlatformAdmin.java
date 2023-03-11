@@ -27,11 +27,8 @@ public class PlatformAdmin {
     private String zip;
     private String country;
 
-    @OneToMany
+    @OneToMany(mappedBy = "platformAdmin")
     private List<School> schools;
-
-    @OneToMany
-    private List<SchoolAdmin> schoolAdmins;
 
 
 }

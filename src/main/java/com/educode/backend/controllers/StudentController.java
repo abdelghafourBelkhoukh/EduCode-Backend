@@ -19,28 +19,33 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto studentDto) {
         return new ResponseEntity<>(studentService.createStudent(studentDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<StudentDto>> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<StudentDto> getStudentById(@PathVariable Long id) {
         return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto) {
         return new ResponseEntity<>(studentService.updateStudent(studentDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
         return new ResponseEntity<>(studentService.deleteStudent(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/assignToPromo/{id}")
+    public ResponseEntity<StudentDto> assignStudentToPromo(@PathVariable Long id, @RequestBody StudentDto studentDto) {
+        return new ResponseEntity<>(studentService.assignStudentToPromo(id, studentDto), HttpStatus.OK);
     }
 }

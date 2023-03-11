@@ -3,7 +3,9 @@ package com.educode.backend.dto;
 import com.educode.backend.entities.Message;
 import com.educode.backend.entities.Notification;
 import com.educode.backend.entities.Promo;
+import com.educode.backend.roleEnum.Role;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,12 +29,8 @@ public class StudentDto {
     private String state;
     private String zip;
     private String country;
-    @ManyToMany
-    private List<PromoDto> promoDtos;
+    private Long school_id;
+    private Long promo_id;
 
-    @OneToMany(mappedBy = "student")
-    private List<NotificationDto> notificationDtos;
-
-    @OneToMany(mappedBy = "student")
-    private List<MessageDto> messageDtos;
+    private Role role = Role.STUDENT;
 }

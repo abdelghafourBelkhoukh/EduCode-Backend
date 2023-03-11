@@ -26,6 +26,8 @@ public class SchoolAdmin {
     private String zip;
     private String country;
 
+    private Long school_id;
+
     @OneToMany
     private List<Notification> notifications;
 
@@ -33,6 +35,7 @@ public class SchoolAdmin {
     private List<Message> messages;
 
     @ManyToOne
+    @JoinColumn(name = "school_id", insertable = false, updatable = false)
     private School school;
 
 

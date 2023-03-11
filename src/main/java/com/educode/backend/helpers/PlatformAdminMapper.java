@@ -1,7 +1,9 @@
 package com.educode.backend.helpers;
 
+import com.educode.backend.dto.AuthDto;
 import com.educode.backend.dto.PlatformAdminDto;
 import com.educode.backend.entities.PlatformAdmin;
+import com.educode.backend.roleEnum.Role;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -39,4 +41,6 @@ public class PlatformAdminMapper {
         platformAdmin.setCountry(platformAdminDto.getCountry());
         return platformAdmin;
     }
+
+
 }

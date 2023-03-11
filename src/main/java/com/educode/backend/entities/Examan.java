@@ -19,7 +19,9 @@ public class Examan {
     private String projectBackround;
     private String deadline;
     private String createdDate;
+    private Long promo_id;
 
     @ManyToOne
+    @JoinColumn(name = "promo_id", insertable = false, updatable = false)
     private Promo promo;
 }

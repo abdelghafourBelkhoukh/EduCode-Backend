@@ -3,7 +3,9 @@ package com.educode.backend.dto;
 import com.educode.backend.entities.Message;
 import com.educode.backend.entities.Notification;
 import com.educode.backend.entities.Promo;
+import com.educode.backend.roleEnum.Role;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,13 +28,7 @@ public class FormateurDto {
     private String state;
     private String zip;
     private String country;
-
-    @OneToMany
-    private List<NotificationDto> notificationDtos;
-
-    @OneToMany
-    private List<MessageDto> messageDtos;
-
-    @OneToMany
-    private List<PromoDto> promoDtos;
+    private Long school_id;
+    private Long promo_id;
+    private Role role = Role.FORMATEUR;
 }

@@ -2,6 +2,8 @@ package com.educode.backend.dto;
 
 import com.educode.backend.entities.School;
 import com.educode.backend.entities.SchoolAdmin;
+import com.educode.backend.roleEnum.Role;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +26,6 @@ public class PlatformAdminDto {
     private String state;
     private String zip;
     private String country;
+    private Role role = Role.PLATFORM_ADMIN;
 
-    @OneToMany
-    private List<SchoolDto> schoolDtos;
-
-    @OneToMany
-    private List<SchoolAdminDto> schoolAdminDtos;
 }

@@ -3,23 +3,25 @@ package com.educode.backend.services;
 import com.educode.backend.dto.SchoolAdminDto;
 import com.educode.backend.helpers.SchoolAdminMapper;
 import com.educode.backend.repositories.SchoolAdminRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class SchoolAdminService {
 
     final private SchoolAdminMapper schoolAdminMapper;
     final private SchoolAdminRepository schoolAdminRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public SchoolAdminService(SchoolAdminRepository schoolAdminRepository, SchoolAdminMapper schoolAdminMapper) {
-        this.schoolAdminRepository = schoolAdminRepository;
-        this.schoolAdminMapper = schoolAdminMapper;
-    }
+
 
     public SchoolAdminDto createSchoolAdmin(SchoolAdminDto schoolAdminDto) {
+        schoolAdminDto.setPassword(passwordEncoder.encode(schoolAdminDto.getPassword()));
         schoolAdminRepository.save(schoolAdminMapper.toEntity(schoolAdminDto));
         return schoolAdminDto;
     }
@@ -33,6 +35,7 @@ public class SchoolAdminService {
     }
 
     public SchoolAdminDto updateSchoolAdmin(SchoolAdminDto schoolAdminDto) {
+        schoolAdminDto.setPassword(passwordEncoder.encode(schoolAdminDto.getPassword()));
         schoolAdminRepository.save(schoolAdminMapper.toEntity(schoolAdminDto));
         return schoolAdminDto;
     }

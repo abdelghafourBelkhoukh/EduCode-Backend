@@ -18,29 +18,34 @@ public class ExamanController {
         this.examanService = examanService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ExamanDto> createExaman(@RequestBody ExamanDto examanDto) {
         return new ResponseEntity<>(examanService.createExaman(examanDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<ExamanDto>> getAllExamans() {
         return new ResponseEntity<>(examanService.getAllExamans(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ExamanDto> getExamanById(@PathVariable Long id) {
         return new ResponseEntity<>(examanService.getExamanById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<ExamanDto> updateExaman(@RequestBody ExamanDto examanDto) {
         return new ResponseEntity<>(examanService.updateExaman(examanDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteExaman(@PathVariable Long id) {
         return new ResponseEntity<>(examanService.deleteExaman(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/assignToPromo/{id}")
+    public ResponseEntity<ExamanDto> assignExamanToPromo(@PathVariable Long id, @RequestBody ExamanDto examanDto) {
+        return new ResponseEntity<>(examanService.assignExamanToPromo(id, examanDto), HttpStatus.OK);
     }
 
 

@@ -21,11 +21,13 @@ public class StudentMapper {
         student.setState(studentDto.getState());
         student.setZip(studentDto.getZip());
         student.setCountry(studentDto.getCountry());
+        student.setSchool_id(studentDto.getSchool_id());
+        student.setPromo_id(studentDto.getPromo_id());
 
         return student;
     }
 
-    public StudentDto toDto(Student student) {
+    public  StudentDto toDto(Student student) {
         StudentDto studentDto = new StudentDto();
         studentDto.setId(student.getId());
         studentDto.setFirstName(student.getFirstName());
@@ -38,6 +40,8 @@ public class StudentMapper {
         studentDto.setState(student.getState());
         studentDto.setZip(student.getZip());
         studentDto.setCountry(student.getCountry());
+        studentDto.setSchool_id(student.getSchool_id());
+        studentDto.setPromo_id(student.getPromo_id());
 
         return studentDto;
     }

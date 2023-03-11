@@ -1,15 +1,13 @@
 package com.educode.backend.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Formateur {
     @Id
@@ -25,13 +23,19 @@ public class Formateur {
     private String state;
     private String zip;
     private String country;
+    private Long school_id;
+    private Long promo_id;
 
-    @OneToMany
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "school_id", insertable = false, updatable = false)
+    private School school;
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Notification> notifications;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Message> messages;
 
-    @OneToMany
-    private List<Promo> promos;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "promo_id", insertable = false, updatable = false)
+    private Promo promo;
 }

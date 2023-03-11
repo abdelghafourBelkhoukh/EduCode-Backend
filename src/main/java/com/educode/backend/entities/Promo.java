@@ -18,15 +18,20 @@ public class Promo {
     private Long id;
     private String name;
     private String year;
+    private Long school_id;
 
-    @ManyToMany
+    @OneToMany
     private List<Student> students;
 
-    @ManyToOne
+    @OneToOne
     private Formateur formateur;
 
     @OneToMany
     private List<Examan> examens;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id", insertable = false, updatable = false)
+    private School school;
 
 
 }

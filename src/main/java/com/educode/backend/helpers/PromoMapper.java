@@ -15,14 +15,16 @@ public class PromoMapper {
         }
         promo.setName(promoDto.getName());
         promo.setYear(promoDto.getYear());
+        promo.setSchool_id(promoDto.getSchool_id());
         return promo;
     }
 
-    public static PromoDto toDto(Promo promo) {
+    public PromoDto toDto(Promo promo) {
         PromoDto promoDto = new PromoDto();
         promoDto.setId(promo.getId());
         promoDto.setName(promo.getName());
         promoDto.setYear(promo.getYear());
+        promoDto.setSchool_id(promo.getSchool_id());
         return promoDto;
     }
 }

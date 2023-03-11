@@ -1,18 +1,18 @@
 package com.educode.backend.helpers;
 
+import com.educode.backend.dto.AuthDto;
 import com.educode.backend.dto.SchoolDto;
 import com.educode.backend.entities.PlatformAdmin;
 import com.educode.backend.entities.School;
+import com.educode.backend.roleEnum.Role;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
+@RequiredArgsConstructor
 public class SchoolMapper {
     private PlatformAdminMapper platformAdminMapper;
-
-    public SchoolMapper(PlatformAdminMapper platformAdminMapper) {
-        this.platformAdminMapper = platformAdminMapper;
-    }
 
     public School toEntity(SchoolDto schoolDto) {
         School school = new School();
@@ -45,7 +45,8 @@ public class SchoolMapper {
         schoolDto.setState(school.getState());
         schoolDto.setZip(school.getZip());
         schoolDto.setPlatform_admin_id(school.getPlatform_admin_id());
-        schoolDto.setPlatformAdminDto(platformAdminMapper.toDto(school.getPlatformAdmin()));
         return schoolDto;
     }
+
+
 }

@@ -21,28 +21,33 @@ public class FormateurController {
         this.formateurMapper = formateurMapper;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<FormateurDto> createFormateur(@RequestBody FormateurDto formateurDto) {
         return new ResponseEntity<>(formateurService.createFormateur(formateurDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<FormateurDto>> getAllFormateurs() {
         return new ResponseEntity<>(formateurService.getAllFormateurs(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<FormateurDto> getFormateurById(@PathVariable Long id) {
         return new ResponseEntity<>(formateurService.getFormateurById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<FormateurDto> updateFormateur(@RequestBody FormateurDto formateurDto) {
         return new ResponseEntity<>(formateurService.updateFormateur(formateurDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteFormateur(@PathVariable Long id) {
         return new ResponseEntity<>(formateurService.deleteFormateur(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/assignToPromo/{id}")
+    public ResponseEntity<FormateurDto> assignFormateurToPromo(@PathVariable Long id, @RequestBody FormateurDto formateurDto) {
+        return new ResponseEntity<>(formateurService.assignFormateurToPromo(id, formateurDto), HttpStatus.OK);
     }
 }

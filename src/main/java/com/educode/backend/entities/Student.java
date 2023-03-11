@@ -26,14 +26,21 @@ public class Student {
     private String state;
     private String zip;
     private String country;
-    @ManyToMany
-    private List<Promo> promos;
+    private Long school_id;
+    private Long promo_id;
+    @ManyToOne
+    @JoinColumn(name = "promo_id", insertable = false, updatable = false)
+    private Promo promo;
 
     @OneToMany(mappedBy = "student")
     private List<Notification> notifications;
 
     @OneToMany(mappedBy = "student")
     private List<Message> messages;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id", insertable = false, updatable = false)
+    private School school;
 
 
 

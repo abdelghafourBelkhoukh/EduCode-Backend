@@ -29,9 +29,18 @@ public class School {
     private Long platform_admin_id;
 
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "platform_admin_id", insertable = false, updatable = false)
     private PlatformAdmin platformAdmin;
+
+    @OneToMany(mappedBy = "school")
+    private List<Formateur> formateurs;
+
+    @OneToMany(mappedBy = "school")
+    private List<Student> students;
+
+    @OneToMany(mappedBy = "school")
+    private List<Promo> promos;
 
     @OneToMany(mappedBy = "school")
     private List<SchoolAdmin> schoolAdmins;

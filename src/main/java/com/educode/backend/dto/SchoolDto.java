@@ -2,6 +2,7 @@ package com.educode.backend.dto;
 
 import com.educode.backend.entities.PlatformAdmin;
 import com.educode.backend.entities.SchoolAdmin;
+import com.educode.backend.roleEnum.Role;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -25,10 +26,7 @@ public class SchoolDto {
     private String zip;
     private String country;
     private Long platform_admin_id;
-    @ManyToOne
-    @JoinColumn(name = "platform_admin_id", insertable = false, updatable = false)
-    private PlatformAdminDto platformAdminDto;
+    private Role role = Role.SCHOOL;
 
-    @OneToMany(mappedBy = "school")
-    private List<SchoolAdminDto> schoolAdminDtos;
+
 }

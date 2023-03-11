@@ -1,10 +1,6 @@
 package com.educode.backend.dto;
 
-import com.educode.backend.entities.Message;
-import com.educode.backend.entities.Notification;
-import com.educode.backend.entities.School;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import com.educode.backend.roleEnum.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,13 +22,9 @@ public class SchoolAdminDto {
     private String state;
     private String zip;
     private String country;
+    private Long school_id;
+    private Role role = Role.SCHOOL_ADMIN;
 
-    @OneToMany
-    private List<NotificationDto> notificationDtos;
 
-    @OneToMany
-    private List<MessageDto> messageDtos;
 
-    @ManyToOne
-    private SchoolDto schoolDto;
 }

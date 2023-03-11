@@ -1,7 +1,9 @@
 package com.educode.backend.helpers;
 
+import com.educode.backend.dto.AuthDto;
 import com.educode.backend.dto.SchoolAdminDto;
 import com.educode.backend.entities.SchoolAdmin;
+import com.educode.backend.roleEnum.Role;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -21,6 +23,7 @@ public class SchoolAdminMapper {
         schoolAdmin.setState(schoolAdminDto.getState());
         schoolAdmin.setZip(schoolAdminDto.getZip());
         schoolAdmin.setCountry(schoolAdminDto.getCountry());
+        schoolAdmin.setSchool_id(schoolAdminDto.getSchool_id());
         return schoolAdmin;
     }
 
@@ -37,6 +40,17 @@ public class SchoolAdminMapper {
         schoolAdminDto.setState(schoolAdmin.getState());
         schoolAdminDto.setZip(schoolAdmin.getZip());
         schoolAdminDto.setCountry(schoolAdmin.getCountry());
+        schoolAdminDto.setSchool_id(schoolAdmin.getSchool_id());
         return schoolAdminDto;
+    }
+
+    public AuthDto authToDto(SchoolAdmin byUsernameAndPassword) {
+        AuthDto authDto = new AuthDto();
+        authDto.setId(byUsernameAndPassword.getId());
+        authDto.setFirstName(byUsernameAndPassword.getFistName());
+        authDto.setLastName(byUsernameAndPassword.getLastName());
+        authDto.setEmail(byUsernameAndPassword.getEmail());
+        authDto.setRole(Role.SCHOOL_ADMIN);
+        return authDto;
     }
 }

@@ -1,6 +1,7 @@
 package com.educode.backend.controllers;
 
 import com.educode.backend.dto.PlatformAdminDto;
+import com.educode.backend.dto.SchoolDto;
 import com.educode.backend.services.PlatformAdminService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,28 +20,36 @@ public class PlatfomAdminController {
         this.platformAdminService = platformAdminService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<PlatformAdminDto> createPlatformAdmin(@RequestBody PlatformAdminDto platformAdminDto) {
         return new ResponseEntity<>(platformAdminService.createPlatformAdmin(platformAdminDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<PlatformAdminDto>> getAllPlatformAdmins() {
         return new ResponseEntity<>(platformAdminService.getAllPlatformAdmins(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PlatformAdminDto> getPlatformAdminById(@PathVariable Long id) {
         return new ResponseEntity<>(platformAdminService.getPlatformAdminById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<PlatformAdminDto> updatePlatformAdmin(@RequestBody PlatformAdminDto platformAdminDto) {
         return new ResponseEntity<>(platformAdminService.updatePlatformAdmin(platformAdminDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePlatformAdmin(@PathVariable Long id) {
         return new ResponseEntity<>(platformAdminService.deletePlatformAdmin(id), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}/schools")
+    public ResponseEntity<List<SchoolDto>> getSchoolsByPlatformAdminId(@PathVariable Long id) {
+        return new ResponseEntity<>(platformAdminService.getSchoolsByPlatformAdminId(id), HttpStatus.OK);
+    }
+
+
+
 }

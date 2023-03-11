@@ -1,5 +1,6 @@
 package com.educode.backend.controllers;
 
+import com.educode.backend.dto.ExamanDto;
 import com.educode.backend.dto.PromoDto;
 import com.educode.backend.helpers.PromoMapper;
 import com.educode.backend.services.PromoService;
@@ -19,29 +20,34 @@ public class PromoController {
         this.promoService = promoService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<PromoDto> createPromo(@RequestBody PromoDto promoDto) {
         return new ResponseEntity<>(promoService.createPromo(promoDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<PromoDto>> getAllPromos() {
         return new ResponseEntity<>(promoService.getAllPromos(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PromoDto> getPromoById(@PathVariable Long id) {
         return new ResponseEntity<>(promoService.getPromoById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<PromoDto> updatePromo(@RequestBody PromoDto promoDto) {
         return new ResponseEntity<>(promoService.updatePromo(promoDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePromo(@PathVariable Long id) {
         return new ResponseEntity<>(promoService.deletePromo(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/examans")
+    public ResponseEntity<List<ExamanDto>> getExamansByPromoId(@PathVariable Long id) {
+        return new ResponseEntity<>(promoService.getExamansByPromoId(id), HttpStatus.OK);
     }
 
 

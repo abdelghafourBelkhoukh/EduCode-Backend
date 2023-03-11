@@ -21,11 +21,13 @@ public class FormateurMapper {
         formateur.setState(formateurDto.getState());
         formateur.setZip(formateurDto.getZip());
         formateur.setCountry(formateurDto.getCountry());
+        formateur.setSchool_id(formateurDto.getSchool_id());
+        formateur.setPromo_id(formateurDto.getPromo_id());
 
         return formateur;
     }
 
-    public static FormateurDto toDto(Formateur formateur) {
+    public FormateurDto toDto(Formateur formateur) {
         FormateurDto formateurDto = new FormateurDto();
         formateurDto.setId(formateur.getId());
         formateurDto.setFirstName(formateur.getFirstName());
@@ -38,6 +40,8 @@ public class FormateurMapper {
         formateurDto.setState(formateur.getState());
         formateurDto.setZip(formateur.getZip());
         formateurDto.setCountry(formateur.getCountry());
+        formateurDto.setSchool_id(formateur.getSchool_id());
+        formateurDto.setPromo_id(formateur.getPromo_id());
 
         return formateurDto;
     }
