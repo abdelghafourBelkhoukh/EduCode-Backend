@@ -1,17 +1,22 @@
 package com.educode.backend.services;
 
 import com.educode.backend.dto.*;
+import com.educode.backend.entities.School;
 import com.educode.backend.helpers.*;
 import com.educode.backend.repositories.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SchoolService {
 
     final private SchoolRepository schoolRepository;
@@ -42,9 +47,24 @@ public class SchoolService {
     }
 
     public SchoolDto updateSchool(SchoolDto schoolDto) {
-        schoolDto.setPassword(passwordEncoder.encode(schoolDto.getPassword()));
-        schoolRepository.save(schoolMapper.toEntity(schoolDto));
-        return schoolDto;
+        Optional<School> existingSchoolOptional = schoolRepository.findById(schoolDto.getId());
+        if (existingSchoolOptional.isPresent()) {
+            School existingSchool = existingSchoolOptional.get();
+
+            // Check if the password has changed
+            if (existingSchool.getPassword().equals(schoolDto.getPassword())) {
+                // If the password has not changed, then we don't want to re-encode it
+                schoolDto.setPassword(existingSchool.getPassword());
+            } else {
+                // If the password has changed, then we need to re-encode it
+                schoolDto.setPassword(passwordEncoder.encode(schoolDto.getPassword()));
+            }
+
+            schoolRepository.save(schoolMapper.toEntity(schoolDto));
+            return schoolDto;
+        } else {
+            return null;
+        }
     }
 
     public void deleteSchool(Long id) {

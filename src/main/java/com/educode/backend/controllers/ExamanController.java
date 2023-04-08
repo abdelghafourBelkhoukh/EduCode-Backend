@@ -39,8 +39,8 @@ public class ExamanController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteExaman(@PathVariable Long id) {
-        return new ResponseEntity<>(examanService.deleteExaman(id), HttpStatus.OK);
+    public void deleteExaman(@PathVariable Long id) {
+        examanService.deleteExaman(id);
     }
 
     @PutMapping("/assignToPromo/{id}")

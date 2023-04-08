@@ -35,9 +35,8 @@ public class FormateurService {
         return formateurDto;
     }
 
-    public String deleteFormateur(Long id) {
+    public void deleteFormateur(Long id) {
         formateurRepository.deleteById(id);
-        return "Formateur with id: " + id + " was deleted";
     }
 
     public List<FormateurDto> getAllFormateurs() {
@@ -48,5 +47,13 @@ public class FormateurService {
         formateurDto.setPromo_id(id);
         formateurRepository.save(FormateurMapper.toEntity(formateurDto));
         return formateurDto;
+    }
+
+    public FormateurDto getFormateurByEmail(String email) {
+        return FormateurMapper.toDto(formateurRepository.findByEmail(email));
+    }
+
+    public Long getPromoIdByFormateurEmail(String email) {
+        return formateurRepository.findByEmail(email).getPromo_id();
     }
 }

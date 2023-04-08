@@ -36,18 +36,28 @@ public class FormateurController {
         return new ResponseEntity<>(formateurService.getFormateurById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/byemail/{email}")
+    public ResponseEntity<FormateurDto> getFormateurByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(formateurService.getFormateurByEmail(email), HttpStatus.OK);
+    }
+
     @PutMapping
     public ResponseEntity<FormateurDto> updateFormateur(@RequestBody FormateurDto formateurDto) {
         return new ResponseEntity<>(formateurService.updateFormateur(formateurDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteFormateur(@PathVariable Long id) {
-        return new ResponseEntity<>(formateurService.deleteFormateur(id), HttpStatus.OK);
+    public void deleteFormateur(@PathVariable Long id) {
+        formateurService.deleteFormateur(id);
     }
 
     @PutMapping("/assignToPromo/{id}")
     public ResponseEntity<FormateurDto> assignFormateurToPromo(@PathVariable Long id, @RequestBody FormateurDto formateurDto) {
         return new ResponseEntity<>(formateurService.assignFormateurToPromo(id, formateurDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/promoId/{email}")
+    public ResponseEntity<Long> getPromoIdByFormateurEmail(@PathVariable String email) {
+        return new ResponseEntity<>(formateurService.getPromoIdByFormateurEmail(email), HttpStatus.OK);
     }
 }

@@ -39,14 +39,21 @@ public class StudentService {
         return studentDto;
     }
 
-    public String deleteStudent(Long id) {
+    public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
-        return "Student with id: " + id + " was deleted";
     }
 
     public StudentDto assignStudentToPromo(Long id, StudentDto studentDto) {
         studentDto.setPromo_id(id);
         studentRepository.save(studentMapper.toEntity(studentDto));
         return studentDto;
+    }
+
+    public Long getStudentIdByEmail(String email) {
+        return studentRepository.findByEmail(email).getId();
+    }
+
+    public List<StudentDto> getStudentsByPromoId(Long promoId) {
+        return studentRepository.findAllByPromo_id(promoId).stream().map(studentMapper::toDto).collect(Collectors.toList());
     }
 }

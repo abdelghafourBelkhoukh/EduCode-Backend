@@ -41,8 +41,8 @@ public class PlatfomAdminController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePlatformAdmin(@PathVariable Long id) {
-        return new ResponseEntity<>(platformAdminService.deletePlatformAdmin(id), HttpStatus.OK);
+    public void deletePlatformAdmin(@PathVariable Long id) {
+        platformAdminService.deletePlatformAdmin(id);
     }
 
     @GetMapping("/{id}/schools")

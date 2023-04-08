@@ -14,5 +14,5 @@ public interface FormateurRepository extends JpaRepository<Formateur, Long> {
     Formateur findByEmailAndPassword(String email, String encode);
 
     Optional<Formateur> findPersonByEmail(String email);
-    <Optional> Formateur findByEmail(String email);
+    Formateur findByEmail(String email);
 }

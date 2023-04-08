@@ -40,12 +40,22 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteStudent(@PathVariable Long id) {
-        return new ResponseEntity<>(studentService.deleteStudent(id), HttpStatus.OK);
+    public void deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudent(id);
+    }
+
+    @GetMapping("/id/{email}")
+    public ResponseEntity<Long> getStudentIdByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(studentService.getStudentIdByEmail(email), HttpStatus.OK);
     }
 
     @PutMapping("/assignToPromo/{id}")
     public ResponseEntity<StudentDto> assignStudentToPromo(@PathVariable Long id, @RequestBody StudentDto studentDto) {
         return new ResponseEntity<>(studentService.assignStudentToPromo(id, studentDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/promo/{promoId}")
+    public ResponseEntity<List<StudentDto>> getStudentsByPromoId(@PathVariable Long promoId) {
+        return new ResponseEntity<>(studentService.getStudentsByPromoId(promoId), HttpStatus.OK);
     }
 }

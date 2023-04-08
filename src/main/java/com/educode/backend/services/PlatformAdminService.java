@@ -42,9 +42,8 @@ public class PlatformAdminService {
         return platformAdminDto;
     }
 
-    public String deletePlatformAdmin(Long id) {
+    public void deletePlatformAdmin(Long id) {
         platformAdminRepository.deleteById(id);
-        return "Platform admin with id " + id + " deleted";
     }
 
     public List<SchoolDto> getSchoolsByPlatformAdminId(Long id) {

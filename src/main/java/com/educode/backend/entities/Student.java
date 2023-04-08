@@ -42,6 +42,9 @@ public class Student {
     @JoinColumn(name = "school_id", insertable = false, updatable = false)
     private School school;
 
+    @OneToOne
+    private Rendu rendu;
+
 
 
 }

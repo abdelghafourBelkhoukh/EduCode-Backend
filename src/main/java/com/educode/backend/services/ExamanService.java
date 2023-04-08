@@ -34,9 +34,8 @@ public class ExamanService {
         return examanDto;
     }
 
-    public String deleteExaman(Long id) {
+    public void deleteExaman(Long id) {
         examanRepository.deleteById(id);
-        return "Examan with id: " + id + " was deleted";
     }
 
     public List<ExamanDto> getAllExamans() {

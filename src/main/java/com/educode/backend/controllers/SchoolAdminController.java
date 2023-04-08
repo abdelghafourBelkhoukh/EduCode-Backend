@@ -39,8 +39,8 @@ public class SchoolAdminController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteSchoolAdmin(@PathVariable Long id) {
-        return new ResponseEntity<>(schoolAdminService.deleteSchoolAdmin(id), HttpStatus.OK);
+    public void deleteSchoolAdmin(@PathVariable Long id) {
+        schoolAdminService.deleteSchoolAdmin(id);
     }
 
 

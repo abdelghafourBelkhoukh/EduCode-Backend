@@ -41,8 +41,8 @@ public class PromoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePromo(@PathVariable Long id) {
-        return new ResponseEntity<>(promoService.deletePromo(id), HttpStatus.OK);
+    public void deletePromo(@PathVariable Long id) {
+        promoService.deletePromo(id);
     }
 
     @GetMapping("/{id}/examans")

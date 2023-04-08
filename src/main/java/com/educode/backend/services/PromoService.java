@@ -39,9 +39,8 @@ public class PromoService {
         return promoDto;
     }
 
-    public String deletePromo(Long id) {
+    public void deletePromo(Long id) {
         promoRepository.deleteById(id);
-        return "Promo with id: " + id + " was deleted";
     }
 
     public List<PromoDto> getAllPromos() {

@@ -40,8 +40,7 @@ public class SchoolAdminService {
         return schoolAdminDto;
     }
 
-    public String deleteSchoolAdmin(Long id) {
+    public void deleteSchoolAdmin(Long id) {
         schoolAdminRepository.deleteById(id);
-        return "School admin with id " + id + " deleted";
     }
 }
